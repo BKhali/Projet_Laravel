@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\FerryController;
+use App\Models\Ferry;
 
-class Ferry extends Controller
+class FerryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $ferries=Ferry::all();
-        return view('ferries.index', compact('ferries'));
+        $ferries = Ferry::all(); // Assurez-vous que le modèle Ferry est correctement importé
+        return view('/listFerry', compact('ferries'));
     }
 
     /**

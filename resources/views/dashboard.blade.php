@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <?php /*<div class="container">
         <h1>Liste des Ferries</h1>
         <table class="table">
             <thead>
@@ -44,5 +44,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    </div>*/?>
 </x-app-layout>

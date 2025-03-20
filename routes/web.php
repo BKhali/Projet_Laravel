@@ -19,7 +19,6 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/ferries', [FerryController::class, 'index'])->name('ferries.index');
 Route::get('/listFerry', [FerryController::class, 'index'])->name('listFerry');
 
 Route::get('/dashboard', function () {
