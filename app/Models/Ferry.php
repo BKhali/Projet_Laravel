@@ -13,6 +13,10 @@ class Ferry extends Model
     protected $table = 'ferries';
 
     protected $fillable = [
-        'nom', 'photo', 'longueur', 'largeur', 'vitesse'
+        'nom',
+        'photo',
+        'longueur',
+        'largeur',
+        'vitesse',
     ];
 }

@@ -31,6 +31,16 @@
     </style>
 </head>
 <body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+        <div class="container ">
+            <a class="navbar-brand text-light" href="#">SicilyLines</a>
+            <div class="ml-auto">
+                <span class="navbar-text text-light">
+                    {{ Auth::user()->name ?? 'Invité' }}
+                </span>
+            </div>
+        </div>
+    </nav>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

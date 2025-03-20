@@ -19,7 +19,11 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/listFerry', [FerryController::class, 'index'])->name('listFerry');
+Route::get('/ferries', [FerryController::class, 'index'])->name('ferries.index');
+Route::get('/ferries/create', [FerryController::class, 'create'])->name('ferries.create');
+Route::post('/ferries', [FerryController::class, 'store'])->name('ferries.store');
+Route::get('/ferries/{id}', [FerryController::class, 'show'])->name('ferries.show');
+Route::delete('/ferries/{id}', [FerryController::class, 'destroy'])->name('ferries.destroy');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,6 +31,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
