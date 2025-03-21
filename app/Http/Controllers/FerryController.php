@@ -29,25 +29,30 @@ class FerryController extends Controller
      */
     public function store(Request $request)
     {
-        // Valider les données du formulaire
-        $validatedData = $request->validate([
+        $request->validate([
             'nom' => 'required|string|max:255',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:12048',
             'longueur' => 'required|numeric',
             'largeur' => 'required|numeric',
             'vitesse' => 'required|numeric',
         ]);
 
-        // Gérer l'upload de la photo
+        // Gérer l'upload de l'image
         if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('ferries', 'public');
-            $validatedData['photo'] = $photoPath;
+            $file = $request->file('photo');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img'), $filename);
         }
 
-        // Créer un nouveau ferry
-        Ferry::create($validatedData);
+        // Créer le ferry avec le nom de la photo
+        Ferry::create([
+            'nom' => $request->nom,
+            'photo' => $filename ?? null, // Enregistrer uniquement le nom de l'image
+            'longueur' => $request->longueur,
+            'largeur' => $request->largeur,
+            'vitesse' => $request->vitesse,
+        ]);
 
-        // Rediriger vers la liste des ferries avec un message de succès
         return redirect()->route('ferries.index')->with('success', 'Ferry ajouté avec succès.');
     }
 

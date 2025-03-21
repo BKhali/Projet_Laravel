@@ -36,7 +36,11 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center my-3">
             <h1>Liste des Ferries</h1>
-            <a href="{{ route('ferries.create') }}" class="btn btn-success">Ajouter un bateau</a>
+            <div class="ml-auto d-flex">
+                <!-- Bouton générer PDF -->
+                <a href="#" class="btn btn-primary mr-2">Générer un PDF</a>
+                <a href="{{ route('ferries.create') }}" class="btn btn-success">Ajouter un bateau</a>
+            </div>
         </div>
         <table class="table table-bordered">
             <thead class="thead-dark">
